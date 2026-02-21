@@ -1,0 +1,43 @@
+INSERT INTO customers (signup_date, plan_type, country) VALUES
+('2025-01-05', 'Basic', 'US'),
+('2025-01-12', 'Basic', 'US'),
+('2025-01-20', 'Pro', 'Canada'),
+('2025-02-01', 'Basic', 'US'),
+('2025-02-05', 'Pro', 'US'),
+('2025-02-10', 'Premium', 'US'),
+('2025-02-20', 'Basic', 'Canada'),
+('2025-03-01', 'Pro', 'US'),
+('2025-03-05', 'Premium', 'US'),
+('2025-03-10', 'Basic', 'US');
+
+INSERT INTO subscriptions VALUES
+(1, 'Churned', '2025-03-01'),
+(2, 'Churned', '2025-03-10'),
+(3, 'Active', NULL),
+(4, 'Churned', '2025-04-01'),
+(5, 'Active', NULL),
+(6, 'Active', NULL),
+(7, 'Churned', '2025-04-10'),
+(8, 'Active', NULL),
+(9, 'Active', NULL),
+(10, 'Churned', '2025-04-15');
+
+INSERT INTO usage_events (customer_id, event_date, feature_used) VALUES
+(1, '2025-01-06', 'Login'),
+(1, '2025-01-07', 'Report'),
+(2, '2025-01-13', 'Login'),
+(3, '2025-01-21', 'Login'),
+(3, '2025-01-22', 'Export'),
+(4, '2025-02-02', 'Login'),
+(5, '2025-02-06', 'Login'),
+(5, '2025-02-07', 'API'),
+(6, '2025-02-11', 'Login'),
+(6, '2025-02-12', 'Report'),
+(6, '2025-02-13', 'Export'),
+(7, '2025-02-21', 'Login'),
+(8, '2025-03-02', 'Login'),
+(8, '2025-03-03', 'Report'),
+(9, '2025-03-06', 'Login'),
+(9, '2025-03-07', 'Export'),
+(9, '2025-03-08', 'API'),
+(10, '2025-03-11', 'Login');

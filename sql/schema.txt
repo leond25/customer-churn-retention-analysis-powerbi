@@ -1,0 +1,25 @@
+DROP DATABASE IF EXISTS ba_churn_analysis;
+CREATE DATABASE ba_churn_analysis;
+USE ba_churn_analysis;
+
+CREATE TABLE customers (
+  customer_id INT PRIMARY KEY AUTO_INCREMENT,
+  signup_date DATE NOT NULL,
+  plan_type VARCHAR(20) NOT NULL,
+  country VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE subscriptions (
+  customer_id INT PRIMARY KEY,
+  status VARCHAR(20) NOT NULL,         -- Active / Churned
+  churn_date DATE NULL,
+  FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+);
+
+CREATE TABLE usage_events (
+  event_id INT PRIMARY KEY AUTO_INCREMENT,
+  customer_id INT NOT NULL,
+  event_date DATE NOT NULL,
+  feature_used VARCHAR(50) NOT NULL,
+  FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+);

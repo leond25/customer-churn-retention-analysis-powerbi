@@ -1,0 +1,40 @@
+# Power BI DAX Measures
+
+## Total Customers
+```DAX
+Total Customers = DISTINCTCOUNT(customers[customer_id])
+
+Active Customers =
+CALCULATE(
+    DISTINCTCOUNT(subscriptions[customer_id]),
+    subscriptions[status] = "Active"
+)
+
+Churned Customers =
+CALCULATE(
+    DISTINCTCOUNT(subscriptions[customer_id]),
+    subscriptions[status] = "Churned"
+)
+
+Churn Rate % =
+DIVIDE([Churned Customers], [Total Customers])
+Churned Customers (by churn date)
+Churned Customers (by churn date) =
+CALCULATE(
+    DISTINCTCOUNT(subscriptions[customer_id]),
+    subscriptions[status] = "Churned",
+    USERELATIONSHIP(subscriptions[churn_date], 'Date'[Date])
+)
+
+
+Avg Usage Events per Customer =
+AVERAGEX(
+    VALUES(customers[customer_id]),
+    CALCULATE(COUNT(usage_events[event_id]))
+)
+
+Feature Events per Customer =
+DIVIDE(
+    COUNT(usage_events[event_id]),
+    DISTINCTCOUNT(customers[customer_id])
+)
